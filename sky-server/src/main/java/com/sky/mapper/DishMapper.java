@@ -63,4 +63,11 @@ public interface DishMapper {
      */
     @AutoFill(value = OperationType.UPDATE) //  自动填充updateTime, updateUser,这样service层就不用补充这些数据了
     void update(Dish dish);
+
+    /**
+     * 根据条件查询菜品数据, 动态SQL写在xml里
+     * @param dish
+     * @return
+     */
+    List<Dish> list(Dish dish);
 }
