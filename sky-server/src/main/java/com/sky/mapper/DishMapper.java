@@ -1,8 +1,12 @@
 package com.sky.mapper;
 
+import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
+import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.enumeration.OperationType;
+import com.sky.vo.DishVO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -23,4 +27,25 @@ public interface DishMapper {
      */
     @AutoFill(value = OperationType.INSERT) // 自动填充createTime, updateTime, createUser, updateUser,这样service层就不用补充这些数据了
     void insert(Dish dish);
+
+    /**
+     * 菜品分页查询, 动态SQL写在xml里
+     * @param dishPageQueryDTO
+     * @return
+     */
+    Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    /**
+     * 根据id查询菜品和口味数据
+     * @param id
+     * @return
+     */
+    @Select("select * from dish where id = #{id}")
+    Dish getById(Long id);
+
+    /**
+     * 根据id删除菜品
+     */
+    @Delete("delete from dish where id = #{id}")
+    void deleteById(Long id);
 }
