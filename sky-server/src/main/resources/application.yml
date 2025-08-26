@@ -13,6 +13,12 @@ spring:
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
 
+  #文件上传配置信息，设置最大上传文件大小--------------------------
+  servlet:
+    multipart:
+      max-file-size: 10MB #最大单个文件大小
+      max-request-size: 100MB #最大请求大小（一次请求可以上传多个文件）
+
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
@@ -20,6 +26,7 @@ mybatis:
   configuration:
     #开启驼峰命名
     map-underscore-to-camel-case: true
+
 
 logging:
   level:
