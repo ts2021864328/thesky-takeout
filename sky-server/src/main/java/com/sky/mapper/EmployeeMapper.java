@@ -32,4 +32,10 @@ public interface EmployeeMapper {
      * @return
      */
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 根据id动态修改员工属性, 动态SQL写在xml文件中
+     * @param employee
+     */
+    void update(Employee employee);
 }
