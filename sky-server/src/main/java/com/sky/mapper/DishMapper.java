@@ -56,4 +56,11 @@ public interface DishMapper {
      * @param ids
      */
     void deleteByIds(List<Long> ids);
+
+    /**
+     * 根据id修改菜品, 动态SQL语句写在xml里
+     * @param dish
+     */
+    @AutoFill(value = OperationType.UPDATE) //  自动填充updateTime, updateUser,这样service层就不用补充这些数据了
+    void update(Dish dish);
 }
